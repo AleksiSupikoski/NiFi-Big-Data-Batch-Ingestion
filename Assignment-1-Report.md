@@ -16,9 +16,9 @@ Out of all the listed application domains (MongoDB, ElasticSearch, Cassandra, Co
 
 This system can be configured to interact with Apache Nifi. With NiFi we can configure a dataingestion flow for mysimbd-dataingest, that can  interact with mysimbdp-coredms (running cassandra) by configuring a connection to it (address:port) and providing credentials to be able to execute cql commands remotely on the cluster. In the same way, with NiFi, mysimmdp-daas can be deployed to interact with mysimbdp-coredms as part of a single flow having at both ends “processors” handling calls to APIs in form of a HandleHttpRequest -processor at one end and HandleHttpResponse at the other. The third parties i can think of could be some kind of messaging brokers put in between the IoT device and the receiver node of the dataingest  
 
-3.  For the custer of Cassandra nodes we use configuration of at least three nodes to provide high availability and fault tolerance. In this scenario the prevention of a single-point-of-failure situation implies that data is replicated among the nodes and that at least one node is available.  
+3. For the custer of Cassandra nodes we use configuration of at least three nodes to provide high availability and fault tolerance. In this scenario the prevention of a single-point-of-failure situation implies that data is replicated among the nodes and that at least one node is available.  
 
-4.  The replication level of three (among the three ndoes) would be a sufficient level of redundancy if a node fails, so that the data is possible to retrieve or upload from/to another. In Cassandra this can be easily configured to automatically replicate data among the nodes. 
+4. The replication level of three (among the three ndoes) would be a sufficient level of redundancy if a node fails, so that the data is possible to retrieve or upload from/to another. In Cassandra this can be easily configured to automatically replicate data among the nodes. 
 
 5. The mysimbdp-dataingest can be be easily scaled by adding nodes to a NiFi cluster thus increasing its power. In the same way we can add more nodes to Cassandra.
 
