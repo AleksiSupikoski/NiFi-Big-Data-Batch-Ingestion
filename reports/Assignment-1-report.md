@@ -98,3 +98,9 @@ As mentioned in 2.4, the addition of more heap to nifi helped to overkome errors
 # 3
 
 3.1
+
+For example, one type of benefitial metadata could be the average acceleration of a device, this way people at the zoo could find data for the most active tortoises. Acceleration could be joined with time ranges to be able to find datasets for time ranges when tortoises are active.
+
+3.2
+
+
