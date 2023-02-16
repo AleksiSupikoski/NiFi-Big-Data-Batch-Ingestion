@@ -103,4 +103,16 @@ For example, one type of benefitial metadata could be the average acceleration o
 
 3.2
 
+For each tenant their own keyspace or a table within it can be created. A registry would keep track of in which table the data for each tenant is stored, for example defined by the id of a tenant.
 
+3.3
+
+In order fo give each tenant his own service automatically, for example as part of a dataflow, it is possible to create a new table or a keyspace for the tenant, e.g. by tenants ID, if it did not exist before. This way each tenant will get his own service when needed.
+
+3.4
+
+If reads/writes are abstracted to daas, in dataingest, we would need to instead of writing straight to the database, by connecting to it immediately in it, the dataingest would need to connect to api of the daas and send data there for it to handle. So instead of a processor in the ned of a flow defined in nifi, there would be an endpoint of daas.
+
+3.5
+
+Dataingest can be used when writing data, and should be using when writing extremely large datasets, as we have more control when using it and expext more throughput, while daas should be used when sending smaller amounts of data and more frequently.
