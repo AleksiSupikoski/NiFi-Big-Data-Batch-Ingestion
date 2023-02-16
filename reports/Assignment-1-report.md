@@ -40,6 +40,7 @@ The mysimbdp-dataingest can be be easily scaled by adding nodes to a NiFi cluste
 
 For the incoming data for the tenant i have designed the following data schema:
 
+```
 CREATE TABLE data.ddata (
 time text,
 readable_time timestamp,
@@ -53,6 +54,7 @@ pressure float,
 temperature float,
 dev_id text,
 PRIMARY KEY (dev_id, readable_time));
+```
 
 The IoT data is stored into “ddata” -table in “data” keyspace. The dev_id (IoT device ID) is set as a row key and since we are dealing with timeseries data, the timestamp (readable_time) is set as a column name, for which Cassandra has a suiting datatype, timestamp. The csv data doesn’t even need to be converted for it. All the other values are then stored with suitable datatypes.   With this configuration, it is possible to store data of multiple tortoises (by their device IDs), and the timeseries data ordered by their timestamps. This also allows us to later select data by time ranges, which is a benefit.
 
