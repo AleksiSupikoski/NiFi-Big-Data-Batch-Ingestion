@@ -59,11 +59,13 @@ The IoT data is stored into “ddata” -table in “data” keyspace. The dev_i
 
 The data of “data” keyspace is partitioned among all the atleast three nodes with SimpleStrategy, wirst placing the data in the current node and then replicating the data around other nodes. This is sufficient enough if we are keeping data in a single datacenter, what we are doing here.
 
+```
 CREATE KEYSPACE data
    ... WITH REPLICATION = { 
    ... 'class' : 'SimpleStrategy',
    ... 'replication_factor' : 3
-   ... };
+   ... }
+```
 
 2.3
 
