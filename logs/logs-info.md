@@ -1,1 +1,1 @@
-I didn't use these logs to analyze the data, but the ui interface of the NiFi, but decided to upload them anyways.
+I didn't use these logs to analyze the data, but the ui interface of the NiFi, but decided to upload them anyways. There are not all logs included here, as i have already deleted them before realising that i could include them here.
