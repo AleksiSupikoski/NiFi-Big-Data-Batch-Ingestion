@@ -51,3 +51,21 @@ The IoT data is stored into “ddata” -table in “data” keyspace. The dev_i
 
 3. For mysimdb-dataingest a NiFi flow is configured and deployed. It reads the data which is stored in csv files, validates the rows with a regex and then constructs a cql insert command with extracted values, that is executed on a processor that connects to the Cassandra cluster and executes the insert commands. NiFi is here handy  because it is also capable of queuing the data inputs.
 
+4. In order to measure throughtput of the system i have tried a two teployments: one coredms vs cluster of three nodes and varied number of dataingestions: 1, 5, 10. Each instance of dataingestion was writing the same date but into different tables "for different tenants". Here are the results:
+
+3 nodes: 
+1x4.4MB / 15 s
+5x4.4MB / 21 s
+10x4.4MB / 25 s
+
+1 node:
+1x4.4MB / 0:05 s
+5x4.4MB / 1:27 s
+10x4.4MB / 2:01 s
+
+The time is maximum time taken for all dataingestions to finish. The measures were taken from NiFi's interface, i could extract this data from the logs. I also was unable before the deadline to do deploy scale cassandra cluster by adding more nodes (the nodes would exit at deployment for no reason). I had failures when running nifi dataingestion with default heap size (hundreds of megabytes), when setting it to gigabyte it was able to run without failures, this is due to the fact that logging being turned on for the tests during run consumed too much heap.
+
+Since the configuration of for data replication is SimpleStrategy, as the node is running in a single datacenter, the consistency level could not be varied. 
+
+6. As mentioned in 5, the addition of more heap to nifi helped to overkome errors caused by logging. To increase throughput of nifi itself, i would add more nodes to it, at least three with a zookeeper on top. I tried it and it helped, but i wasn't able to deploy this setup with nifi's latest version. I have included the YML for it anyways, just in case.
+
