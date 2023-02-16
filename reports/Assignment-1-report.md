@@ -32,7 +32,7 @@ The replication level of three (among the three ndoes) would be a sufficient lev
 
 1.5
 
-The mysimbdp-dataingest can be be easily scaled by adding nodes to a NiFi cluster thus increasing its power. In the same way we can add more nodes to Cassandra.
+The mysimbdp-dataingest can be be easily scaled by adding nodes to a NiFi cluster thus increasing its power. I provide an example of such deployment in /code/nificluster/docker-compose.yml In the same way we can add more nodes to Cassandra.
 
 # 2
 
