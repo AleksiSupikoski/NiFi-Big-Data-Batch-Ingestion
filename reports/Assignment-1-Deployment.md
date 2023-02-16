@@ -51,4 +51,4 @@ The NiFi will generate a radom username and password. To see it, pen nifi contai
 
 then `cd logs` and `cat nifi-app.log` ctrl+f / cmd+f Username to find the generated credentials.
 
-
+<p align="center"><img src="img/credentials.png" width="500")<p>
