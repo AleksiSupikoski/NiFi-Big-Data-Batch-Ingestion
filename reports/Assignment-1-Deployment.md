@@ -60,10 +60,20 @@ go to [https://localhost:8443/nifi](https://localhost:8443/nifi) to see the web 
 ### Deploy Data Ingestion Flow in NiFi
   
 Click on “Upload Template” and upload flows from mysimbdp-dataingest.xml . Then select the template on top bar and drag & drop it to deploy.
-<p align="center"><img src="img/upload-template.png" width="500")<p>
+<p align="center"><img src="img/upload-template.png" width="300")<p>
 
 You can inspect the comments to see what each part of the flow is doing.
   
   
 Before starting the flow, we need to configure connection to the Cassanra cluster. The Flow automatically imports the information (credentials and adresses) of how to connect to the Cassandra cluster, though you are going to need to re-configure it to specify the addresses of the cassandra nodes as your ones will differ.
-<p align="center"><img src="img/settings.png" width="500")<p>
+<p align="center"><img src="img/settings.png" width="300")<p>
+  
+
+Go to Controller Services, click on settings and go to Properties, Specify the IP adresses to the ones of the host machine on which the containers of the Cassandra nodes are hosted. Set Cassandra login credentials, default are password: **cassandra**, username: **cassandra**
+<p align="center"><img src="img/controller.png" width="500")<p>
+  
+After setting them click apply and click on the thunder icon to turn on the service.
+
+If you are using mac you can see your Host machines IPs in advanced Network configurations:
+<p align="center"><img src="img/mac.png" width="300")<p>
+  
