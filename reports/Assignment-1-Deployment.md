@@ -81,3 +81,7 @@ If you are using mac you can see your Host machines IPs in advanced Network conf
 
 With pressing shift and selecting all processors except the first one, InvokeHTTP, and click play button to turn them ready. After that right click on the first node and click run once to retrieve data once and start data ingestion flow.
   <p align="center"><img src="img/once.png" width="750")<p>
+
+If we go back to cqlsh shell, we can see that data has been written:
+
+<p align="center"><img src="img/data.png" width="750")<p>
