@@ -6,12 +6,13 @@
 I have chosen dataset of tortoises from Korkeasaari Zoo, becase i found it funny and i like turtles. The data is time sieries IoT data coming from ruuvitag devices measuring environmental values and movement of the tortoises. Data is given as separate CSV files on https://iot.fvh.fi/downloads/tortoise/ 
 
 Data sample:
-
+```
 time,readable_time,acceleration,acceleration_x,acceleration_y,acceleration_z,battery,humidity,pressure,temperature,dev-id
 1523145619153,2018-04-08T00:00:19.153000Z,1014.1558065701739,-44,324,960,3007,20.5,1017.15,28.37,C2:9A:9F:E5:58:27
 1523145624353,2018-04-08T00:00:24.352999Z,1011.8102588924467,-48,316,960,3007,20.5,1017.14,28.38,C2:9A:9F:E5:58:27
 1523145629373,2018-04-08T00:00:29.372999Z,1020.4704797298156,-44,320,968,3007,20.5,1017.16,28.38,C2:9A:9F:E5:58:27
 … 
+```
 
 Out of all the listed application domains (MongoDB, ElasticSearch, Cassandra, CockroachDB, Apache Hive) Cassandra appeared the most suitable not only because it is the only one i was familiar with through the course tutorials, but because of its general suitability for big data applications thanks to its ability to scale, possibility of reliability configurations and write-performance. When tenants constantly write the data ability to distribute the nodes benefits the application by providing high accessibility of the database that in the end prevents data loss. For time series data we can easily divide the data in columns by it, and then efficiency query the data based on the timestamps. The IoT data is also “standardised” (has constant structure). There are also many other features such as data expiration and compression which can become handy when dealing with constantly growing input of iot data, say if it is being sent every second, wouldn’t it be good idea to compress or even completely delete the data that has been around for a long time and probably unneeded at the moment. The CQL is very similar to SQL which i am already familiar with was also a bonus. Personally i would prefer InfluxDB for the tortoise data, but it was not an option.
 
@@ -74,7 +75,7 @@ For mysimdb-dataingest a NiFi flow is configured and deployed. It reads the data
 2.4
 
 In order to measure throughtput of the system i have tried a two teployments: one coredms vs cluster of three nodes and varied number of dataingestions: 1, 5, 10. Each instance of dataingestion was writing the same date but into different tables "for different tenants". Here are the results:
-
+```
 3 nodes: 
 1x4.4MB / 15 s
 5x4.4MB / 21 s
@@ -84,6 +85,7 @@ In order to measure throughtput of the system i have tried a two teployments: on
 1x4.4MB / 0:05 s
 5x4.4MB / 1:27 s
 10x4.4MB / 2:01 s
+```
 
 The time is maximum time taken for all dataingestions to finish. The measures were taken from NiFi's interface, i could extract this data from the logs. I also was unable before the deadline to do deploy scale cassandra cluster by adding more nodes (the nodes would exit at deployment for no reason). I had failures when running nifi dataingestion with default heap size (hundreds of megabytes), when setting it to gigabyte it was able to run without failures, this is due to the fact that logging being turned on for the tests during run consumed too much heap.
 
