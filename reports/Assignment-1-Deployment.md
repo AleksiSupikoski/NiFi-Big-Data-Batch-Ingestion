@@ -78,3 +78,6 @@ If you are using mac you can see your Host machines IPs in advanced Network conf
 <p align="center"><img src="img/mac.png" width="450")<p>
   
 ### Ingest Data
+
+With pressing shift and selecting all processors except the first one, InvokeHTTP, and click play button to turn them ready. After that right click on the first node and click run once to retrieve data once and start data ingestion flow.
+  <p align="center"><img src="img/once.png" width="750")<p>
