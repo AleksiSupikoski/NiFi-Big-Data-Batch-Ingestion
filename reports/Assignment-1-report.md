@@ -77,6 +77,11 @@ For mysimdb-dataingest a NiFi flow is configured and deployed. It reads the data
 2.4
 
 In order to measure throughtput of the system i have tried a two teployments: one coredms vs cluster of three nodes and varied number of dataingestions: 1, 5, 10. Each instance of dataingestion was writing the same date but into different tables "for different tenants". Here are the results:
+
+<p align="center">
+‹img src="img/performance.png" width="500")
+<p>
+   
 ```
 3 nodes: 
 1x4.4MB / 15 s
