@@ -1,6 +1,6 @@
 
 ## Deploy and Set Up Apache Cassandra Cluster
-
+### Deploy Cassandra Cluster in Docker
 It is expected that Docker is installed on the system. 
 
 In terminal cd into .../code and execute
@@ -10,6 +10,7 @@ When the cluster sets up, get their container ids with
 `docker ps` and enter one of them with 
 `docker exec -it <containerID> bash`
 
+### Configure the Cluster
 Enter CQL with `cqlsh` then create the needed keyspace for a tenant with
 ```
 CREATE KEYSPACE data
@@ -38,6 +39,7 @@ PRIMARY KEY (dev_id, readable_time));
 after that our nifi cluster is set ready for the data to be put into it.
 
 ## Deploy and Confugure Apache NiFi
+### Deploy NiFi in a Container
 
 In terminal pull latest Apache NiFi container: `docker pull apache/nifi:latest`
 
@@ -54,3 +56,14 @@ then `cd logs` and `cat nifi-app.log` ctrl+f / cmd+f Username to find the genera
 <p align="center"><img src="img/credentials.png" width="500")<p>
 
 go to [https://localhost:8443/nifi](https://localhost:8443/nifi) to see the web interface and log in with the received credentials.
+
+### Deploy Data Ingestion Flow in NiFi
+  
+Click on “Upload Template” and upload flows from mysimbdp-dataingest.xml . Then select the template on top bar and drag & drop it to deploy.
+<p align="center"><img src="img/upload-template.png" width="500")<p>
+
+You can inspect the comments to see what each part of the flow is doing.
+  
+  
+Before starting the flow, we need to configure connection to the Cassanra cluster. The Flow automatically imports the information (credentials and adresses) of how to connect to the Cassandra cluster, though you are going to need to re-configure it to specify the addresses of the cassandra nodes as your ones will differ.
+<p align="center"><img src="img/settings.png" width="500")<p>
