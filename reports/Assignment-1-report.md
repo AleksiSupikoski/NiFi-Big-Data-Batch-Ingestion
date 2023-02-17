@@ -96,7 +96,11 @@ In order to measure throughtput of the system i have tried a two teployments: on
 5x4.4MB / 1:27 s
 10x4.4MB / 2:01 s
 ```
+   
+   
+>Please note that for running the tests, the containers were housed on an old macintosh laptop.
 
+   
 The time is maximum time taken for all dataingestions to finish. The measures were taken from NiFi's interface, i could extract this data from the logs. I also was unable before the deadline to do deploy scale cassandra cluster by adding more nodes (the nodes would exit at deployment for no reason). I had failures when running nifi dataingestion with default heap size (hundreds of megabytes), when setting it to gigabyte it was able to run without failures, this is due to the fact that logging being turned on for the tests during run consumed too much heap.
 
 Since the configuration of for data replication is SimpleStrategy, as the node is running in a single datacenter, the consistency level could not be varied. 
