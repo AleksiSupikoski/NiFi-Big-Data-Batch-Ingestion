@@ -1,5 +1,5 @@
 
-# 1
+# 1 - Design
 
 ### 1.1 Explain your choice of the application domain and corresponding types of data to be supported and technologies for mysimbdp-coredms. Explain under which situations/assumptions, your platform serves for big data workload 
 
@@ -39,7 +39,7 @@ The replication level of three (among the three ndoes) would be a sufficient lev
 
 The mysimbdp-dataingest can be be easily scaled by adding nodes to a NiFi cluster thus increasing its power. I provide an example of such deployment in /code/nificluster/docker-compose.yml In the same way we can add more nodes to Cassandra.
 
-# 2
+# 2  - Implementation
 
 ### 2.1 Design, implement and explain one example of the data schema/structure for a tenant whose data will be stored into mysimbdp-coredms
 
@@ -105,7 +105,7 @@ Since the configuration of for data replication is SimpleStrategy, as the node i
 
 As mentioned in 2.4, the addition of more heap to nifi helped to overkome errors caused by logging. To increase throughput of nifi itself, i would add more nodes to it, at least three with a zookeeper on top. I tried it and it helped, but i wasn't able to deploy this setup with nifi's latest version. I have included the YML for it anyways, just in case.
 
-# 3
+# 3 - Extension
 
 ### 3.1 Using your mysimdbp-coredms, a single tenant can create many different databases/datasets. Assume that you want to support the tenant to manage metadata about the databases/datasets, what types of metadata you would like to support? Can you provide one example of using the metadata to find a dataset?
 
