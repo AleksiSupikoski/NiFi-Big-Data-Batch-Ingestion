@@ -72,7 +72,7 @@ CREATE KEYSPACE data
 
 2.3
 
-For mysimdb-dataingest a NiFi flow is configured and deployed. It reads the data which is stored in csv files, validates the rows with a regex and then constructs a cql insert command with extracted values, that is executed on a processor that connects to the Cassandra cluster and executes the insert commands. NiFi is here handy  because it is also capable of queuing the data inputs. The atomic data that is stored is defined by the timestamp, i.e. there will be as many different data rows for each device-id as many there are timestamps. In coredms -NiFi we can set the consistency requirement of individual data writes into cassandra nodes, but i don't see a use case for this so i have set it to one.
+For mysimdb-dataingest a NiFi flow is configured and deployed. It reads the data which is stored in csv files on datasource webpage. The flow gets file from the url, reads it, splits as part of the nifi flowfile and validates the rows with a regex and then constructs a cql insert command with extracted values, that is executed on a processor that connects to the Cassandra cluster and executes the insert commands. NiFi is here handy  because it is also capable of queuing the data inputs. The atomic data that is stored is defined by the timestamp, i.e. there will be as many different data rows for each device-id as many there are timestamps. In coredms -NiFi we can set the consistency requirement of individual data writes into cassandra nodes, but i don't see a use case for this so i have set it to one.
 
 2.4
 
