@@ -3,7 +3,7 @@
 
 1.1
 
-I have chosen dataset of tortoises from Korkeasaari Zoo, becase i found it funny and i like turtles. The data is time sieries IoT data coming from ruuvitag devices measuring environmental values and movement of the tortoises. Data is given as separate CSV files on https://iot.fvh.fi/downloads/tortoise/ 
+I have chosen dataset of tortoises from Korkeasaari Zoo, becase i found it funny and i like turtles. The data is time sieries IoT data coming from ruuvitag devices measuring environmental values and movement of the tortoises. Data is given as separate CSV files on zoo datasource: https://iot.fvh.fi/downloads/tortoise/ 
 
 Data sample:
 ```
