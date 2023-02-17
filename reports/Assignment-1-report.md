@@ -20,6 +20,11 @@ Out of all the listed application domains (MongoDB, ElasticSearch, Cassandra, Co
 
 In mysimbdp the key components are mysimbdp-coredms (responsible for storing and managing the data), -dataingest (responsible for reading data from files/messaging systems and ingesting into coredms) and -daas (from which the API’s are supposed to be called to read/write the data to/from the database).
 
+
+Below is an example how the system would look like at a large scale:
+<p align="center"><img src="img/x.png" width="500")<p>
+
+
 This system can be configured to interact with Apache Nifi. With NiFi we can configure a dataingestion flow for mysimbd-dataingest, that can  interact with mysimbdp-coredms (running cassandra) by configuring a connection to it (address:port) and providing credentials to be able to execute cql commands remotely on the cluster. In the same way, with NiFi, mysimmdp-daas can be deployed to interact with mysimbdp-coredms as part of a single flow having at both ends “processors” handling calls to APIs in form of a HandleHttpRequest -processor at one end and HandleHttpResponse at the other. The third parties i can think of could be some kind of messaging brokers put in between the IoT device and the receiver node of the daas. Obviously the NiFi and Cassanra platforms are not developed by me, luckily they are opensource and available to use.
 
 1.3
