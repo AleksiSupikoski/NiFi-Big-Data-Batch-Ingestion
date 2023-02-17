@@ -1,2 +1,2 @@
 # assignment-1-729792
-assignmentt 
+Aalto University Big Data Platforms course assignment 1
